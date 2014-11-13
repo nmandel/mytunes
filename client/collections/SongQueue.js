@@ -3,11 +3,18 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
+    //if songQueue is 1, then play
+    // console.log(this.length);
 
-    // use App model and view to hook up library up to queue
+    // this.on("add", function() {
+      if (this.length === 1) {
+        this.playFirst();
+      }
+    // }, this)
 
-    // console.log('hello');
+  },
 
-  }
-
+  playFirst: function () {
+    // this.at(0).play();
+  },
 });

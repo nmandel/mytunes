@@ -9,7 +9,8 @@ var PlayerView = Backbone.View.extend({
   },
 
   setSong: function(song){
-    this.model = song;
+    this.model = song; // probably URL
+    this.model.set('currentSong', song);
     this.render();
   },
 
