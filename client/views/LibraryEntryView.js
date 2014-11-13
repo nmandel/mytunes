@@ -7,7 +7,6 @@ var LibraryEntryView = Backbone.View.extend({
 
   events: {
     'click': function() {
-      console.log(this.model);
       // this.model.setSong();  // we need to set song to current
       this.model.play();
       // console.log(this.model);

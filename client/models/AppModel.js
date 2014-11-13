@@ -21,9 +21,7 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     params.library.on('enqueue', function(){
-      // console.log(this.get('songQueue'));
-      // console.log(this);
-      this.get('songQueue').push(this);
+      this.get('songQueue').push(this.get('currentSong'));
       // push the song into songQueue collection
     }, this);
 
@@ -33,12 +31,15 @@ var AppModel = Backbone.Model.extend({
       // console.log(this.get('songQueue'));
     }, this);
 
-    params.library.on('ended', function() {
-      // when a song is ended
-        // replace the currentSong with first song in songQueue
-        //  trigger the play function
-        //  remove the first song in the songQueue
+    params.library.on('ended', function(){
+      console.log('ended');
+      // call dequeue
+      this.model.dequeue();
+      console.log(this.get('songQueue'));
+      // check if the song queue is not empty
+      //  if there is a song, set the first song in the queue to currentSong
     }, this);
+
   }
 
 });

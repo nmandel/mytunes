@@ -6,12 +6,27 @@ var SongModel = Backbone.Model.extend({
     this.trigger('play', this);
   },
 
-  ended: function () {
-    this.trigger('ended',this);
+  initialize: function() {
+
   },
+
+  ended: function () {
+    console.log("trigger");
+    this.trigger('ended', this);
+  },
+
+  //   console.log('ended');
+  //   // when the song ends,
+  //   this.model.addEventListener("ended", function() {
+  //     // remove the first song from the queue
+
+  //     // check if the song queue is not empty
+  //     //  if there is a song, set the first song in the queue to currentSong
+  //   })
 
   enqueue: function () {
     this.trigger('enqueue',this);
+    console.log(this);
   },
 
   dequeue: function () {
@@ -19,3 +34,4 @@ var SongModel = Backbone.Model.extend({
   }
 
 });
+
