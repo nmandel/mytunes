@@ -18,7 +18,7 @@ describe('App', function() {
   });
 
   it('creates a song queue on initialize', function(){
-    expect(app.get('songQueue')).to.be.an.instanceof(SongQueue);
+    expect(app.get('  songQueue')).to.be.an.instanceof(SongQueue);
   });
 
   it('sets the current song when a "play" event is fired', function(){
@@ -27,7 +27,7 @@ describe('App', function() {
     expect(app.get('currentSong')).to.equal(app.get('library').at(0));
   });
 
-  xit('queues the next song when an "enqueue" event is fired', function(){
+  it('queues the next song when an "enqueue" event is fired', function(){
     app.get('library').at(1).enqueue();
     expect(app.get('songQueue').at(0)).to.equal(app.get('library').at(1));
   });
