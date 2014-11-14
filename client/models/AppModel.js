@@ -36,11 +36,15 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     params.library.on('ended', function(){
-      // call dequeue
       this.get('songQueue').shift();
       console.log(this.get('songQueue'));
       // check if the song queue is not empty
-      //  if there is a song, set the first song in the queue to currentSong
+      if (this.get('songQueue').length > 0) {
+        //  if there is a song, set the first song in the queue to currentSong
+        var nextSong = this.get('songQueue').first();
+        nextSong.play();
+
+      }
     }, this);
 
   }
