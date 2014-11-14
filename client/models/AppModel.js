@@ -34,11 +34,11 @@ var AppModel = Backbone.Model.extend({
 
     params.library.on('dequeue', function(){
       // removes first song in songQueue collection
-      this.get('songQueue').shift();
+      this.get('songQueue').remove(this.get('songQueue').at(0));
     }, this);
 
     params.library.on('ended', function(){
-      this.get('songQueue').shift();
+      this.get('songQueue').remove(this.get('songQueue').at(0));
       console.log(this.get('songQueue'));
       // check if the song queue is not empty
       if (this.get('songQueue').length > 0) {
