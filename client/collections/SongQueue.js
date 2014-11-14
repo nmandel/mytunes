@@ -4,7 +4,7 @@ var SongQueue = Songs.extend({
 
   initialize: function(){
 
-    //if songQueue is 1, then play
+    // if songQueue is 1, then play
     this.on("add", function() {
       if (this.length === 1) {
         // grab song in songqueue and play it
@@ -12,6 +12,7 @@ var SongQueue = Songs.extend({
         this.trigger('play');
       }
     }, this)
+
 
   },
 

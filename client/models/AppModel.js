@@ -28,6 +28,8 @@ var AppModel = Backbone.Model.extend({
       if (this.get('songQueue').length === 1) {
         song.play();
       }
+
+
     }, this);
 
     params.library.on('dequeue', function(){
