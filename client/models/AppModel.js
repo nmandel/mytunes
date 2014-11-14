@@ -3,7 +3,7 @@ var AppModel = Backbone.Model.extend({
 
   initialize: function(params){
     // THIS IS A MODEL
-    this.set('currentSong', new SongModel());
+    this.set('currentSong', null);
 
     // THIS IS A COLLECTION
     this.set('songQueue', new SongQueue());
@@ -20,21 +20,24 @@ var AppModel = Backbone.Model.extend({
       this.set('currentSong', song);
     }, this);
 
-    params.library.on('enqueue', function(){
-      this.get('songQueue').push(this.get('currentSong'));
-      // push the song into songQueue collection
+    params.library.on('enqueue', function(song) {
+      // add the song into songQueue collection
+      this.get('songQueue').add(song);
+      console.log(this.get('songQueue'));
+      // if the length of song queue is 1
+      if (this.get('songQueue').length === 1) {
+        song.play();
+      }
     }, this);
 
     params.library.on('dequeue', function(){
       // removes first song in songQueue collection
       this.get('songQueue').shift();
-      // console.log(this.get('songQueue'));
     }, this);
 
     params.library.on('ended', function(){
-      console.log('ended');
       // call dequeue
-      this.model.dequeue();
+      this.get('songQueue').shift();
       console.log(this.get('songQueue'));
       // check if the song queue is not empty
       //  if there is a song, set the first song in the queue to currentSong

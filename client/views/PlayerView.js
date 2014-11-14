@@ -9,14 +9,15 @@ var PlayerView = Backbone.View.extend({
   initialize: function() {
     var playerView = this;
     // when the song ends,
-    this.$el[0].addEventListener("ended", function() {
+    console.log(this);
+    this.$el.on("ended", function() {
       playerView.model.ended();
     })
   },
 
   setSong: function(song){
     this.model = song; // probably URL
-    this.model.set('currentSong', song);
+
     this.render();
   },
 
